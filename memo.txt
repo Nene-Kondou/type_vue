@@ -24,3 +24,5 @@ mustache
             return 計算結果;
         }
     )
+
+3.3.2 オブジェクトをまとめてリアクティブにする reactive()

@@ -19,9 +19,9 @@ function changeTime(): void {
   // timeStr = newTimeStr;
   // 現在の時刻文字列をテンプレート変数timeStrRefに格納
   timeStrRef.value = newTimeStr;
+  // changeTime関数を1秒ごとに実行
+  setInterval(changeTime, 1000);
 }
-// changeTime関数を1秒ごとに実行
-setInterval(changeTime, 1000);
 </script>
 
 <template>

@@ -1,0 +1,10 @@
+mustache
+3.1.5 テンプレートに表示させる変数を定義するref()
+    ref関数は事前にVue.js本体からインポートする必要がある...import {ref} from "vue";
+    refの引数として渡して、その戻り値を変数nameに代入している。①②どちらも同じ
+    ①const name = ref("hoge")
+    ②const yourname = "田中太郎"
+      const name = ref(yourname);
+
+3.2.1 ref()の働き
+    リアクティブシステム...変数の値の変化に連動して表示内容が自動で変化すること

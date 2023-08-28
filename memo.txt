@@ -44,3 +44,57 @@ mustache
 
     v-bind:△△="⚪⚪" △=属性 ⚪=テンプレート変数をオブジェクトにまとめ、そのオブジェクトをまるまるreactive
     v-bindの値には式が記述できる v-bind:href="url + 'guide/index.html'"
+
+4.1.4 バインドする属性をテンプレート変数として指定
+    引数もテンプレート変数で指定する方法を、動的引数(Dynamic Arguments)という
+    v-bind:[変数]="値"
+
+4.1.5 複数の属性にまとめてバインドする方法
+    引数を指定しないでv-bindを使うと、複数の属性をまとめてバインドできる。
+    引数指定しないと、配列がそのままバインドされる
+    <script setup lang="ts">
+        import {ref} from "vue";
+
+        const imgAttributes = ref({
+        src: "/src/assets/logo.svg",
+        alt: "Vueのロゴ",
+        width: 75,
+        height: 75,
+        });
+    </script>
+
+    <template>
+        <p><img v-bind="imgAttributes"></p> ... <img src="/src/assets/logo.svg" alt="Vueのロゴ" width="75" height="75">
+        <p><img v-bind="imgAttributes" title="ロゴです"></p> ... <img src="/src/assets/logo.svg" alt="Vueのロゴ" width="75" height="75" title="ロゴです">
+        <p><img v-bind="imgAttributes" alt="ロゴです"></p> ... <img src="/src/assets/logo.svg" alt="ロゴです" width="75" height="75">
+    </template>
+
+4.1.6 v-bind:style属性へのバインディング
+    設定値として記述できるもの...
+        ▫️テンプレート変数　<p v-bind:style="{color: msgTextRed}">{{ msg }}</p>
+        ▫️リテラル <p v-bind:style="{color: 'pink'}">{{ msg }}</p>
+        ▫️算出プロパティ <p v-bind:style="{fontSize: textSize}">{{ msg }}</p>
+            const textSize = computed(
+                (): string => {
+                    const size = Math.round(Math.random() * 25) + 10;
+                    return `${size}pt`;
+                }
+            )
+    v-bind:styleの値を複数指定する方法
+        v-bind:style="{スタイルプロパティ: "値", ...}"
+        <p v-bind:style="{color: msgTextColor,backgroundColor: msgbgtColor}">{{ msg }}</p>
+
+4.1.7 class属性へのバインディング v-class
+    -------- いったんとばす ---------
+
+4.2.1 イベントりすなを設定するディレクティブ　v-on
+    v-on:イベント名="イベント発生時に実行するメソッド名"
+    メソッド定義の方法
+        const メソッド名 = (): void => {
+            処理内容
+        };
+    数値の文字列への変換
+        TypeScriptではデータ型を厳密に扱う。
+        randは乱数なので数値型。randValueの元となるref()に渡した値は文字列なので、randValue.valueも文字列。
+        文字列型変数に数値は代入できないため、えらーが発生。これを避けるためString(rand)として数値を文字列に変換する。
+        randValue.value = String(rand);　→　(エラー)randValue.value = rand;

@@ -98,3 +98,8 @@ mustache
         randは乱数なので数値型。randValueの元となるref()に渡した値は文字列なので、randValue.valueも文字列。
         文字列型変数に数値は代入できないため、えらーが発生。これを避けるためString(rand)として数値を文字列に変換する。
         randValue.value = String(rand);　→　(エラー)randValue.value = rand;
+4.2.5 イベントオブジェクトとそのほかの引数を併用するイベントハンドラメソッド
+    イベントオブジェクトを引数として自動的に渡すのは、引数を省略してメソッド名のみ記述した場合。
+    例）<p v-on:click="onPClickWithEvent">
+    ほかの引数と組み合わせる場合は、引数部分でイベントオブジェクトとして$eventを明記する必要がある。
+    <p v-on:click="onPClickWithEvent('green', $event)" v-bind:style="{backgroundColor: pBgColorEvent}">

@@ -3,14 +3,14 @@ import WidthModel from './components/WidthModel.vue'
 </script>
 
 <template>
-  <div>
+  <section>
     <h1>コンポーネントの独立性</h1>
     <WidthModel></WidthModel>
     <WidthModel></WidthModel>
-  </div>
+  </section>
 </template>
 
-<style scoped>
+<style>
 section {
   border: blue 1px solid;
   margin: 10px;

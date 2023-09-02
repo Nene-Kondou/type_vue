@@ -103,3 +103,17 @@ mustache
     例）<p v-on:click="onPClickWithEvent">
     ほかの引数と組み合わせる場合は、引数部分でイベントオブジェクトとして$eventを明記する必要がある。
     <p v-on:click="onPClickWithEvent('green', $event)" v-bind:style="{backgroundColor: pBgColorEvent}">
+
+8 | 3
+8.3.1 親からデータをもらうProps
+    Props ... 親コンポーネントから子コンポーネントへの通信、親コンポーネントからのデータを子コンポーネントで受け取る仕組み
+    Propsの定義
+        ①ここのPropsをメンバとするインターフェースを定義
+            親コンポーネントから受け取りたいデータ(各Props)はPropsインターフェースのメンバとして定義
+            interface Props { ... インターフェース名(任意)
+            title: string,
+            content: string
+            }
+        ②defineProps()関数を実行
+            ①で定義したインターフェースをPropsとして利用するためにはdefineProps()関数を実行する。
+            defineProps<Props>();

@@ -170,4 +170,15 @@ mustache
     <OneSection :name="jiro">// <p>問題ありません。</p></OneSection>
 
 9 | 2 9.2.2 複数のSlotを実現する名前付きSlot
-    
+    v-slot
+        templateタグで囲み、どのSlotタグに挿入するのかを表すv-slotディレクティブを記述
+        v-slot:slot名　名前のないSlotはv-slot:defaultとする
+        v-slotの省略形 ... #slot名
+    名前付きSlotの動的設定
+        v-slotで指定する挿入先Slot名として、テンプレート変数を使うことも可能です。
+        v-slot:[テンプレート変数名]
+        <OneSection>
+            <template v-slot:[slotName]>
+                <p>微妙な問題発生</p>
+            
+        </OneSection>

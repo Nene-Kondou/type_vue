@@ -168,3 +168,6 @@ mustache
     </slot>
     親コンポーネント
     <OneSection :name="jiro">// <p>問題ありません。</p></OneSection>
+
+9 | 2 9.2.2 複数のSlotを実現する名前付きSlot
+    

@@ -111,9 +111,12 @@ mustache
         ①ここのPropsをメンバとするインターフェースを定義
             親コンポーネントから受け取りたいデータ(各Props)はPropsインターフェースのメンバとして定義
             interface Props { ... インターフェース名(任意)
-            title: string,
-            content: string
+            各Props名: データ型,
+            ...
             }
         ②defineProps()関数を実行
             ①で定義したインターフェースをPropsとして利用するためにはdefineProps()関数を実行する。
             defineProps<Props>();
+
+8.3.3 親のテンプレート変数をPropsに渡す方法
+    v-bind:Props名="テンプレート変数"

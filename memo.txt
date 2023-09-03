@@ -120,3 +120,39 @@ mustache
 
 8.3.3 親のテンプレート変数をPropsに渡す方法
     v-bind:Props名="テンプレート変数"
+
+8 | 4
+8.4.1 スクリプトブロックでのPropsの値の利用
+    note?: string 必須
+    必須項目のnoteは、データがある場合はそのまま表示し、ない場合は「--」と表示する。
+    そのためにはスクリプトブロックでPropsの値の有無によって処理を変える。
+    defineProps()関数の戻り値を変数(const props)で受け取ると、
+    スクリプトブロック内ではpropsのプロパティとして個々のPropsデータが取り出せるようになる。
+    スクリプトブロックでのPropsデータの利用 ... const props = defineProps<Props>();
+    const localNote = computed(
+    (): string => {
+        let localNote = props.note;
+        if(localNote == undefined) {
+        localNote = "--";
+        }
+        return localNote;
+    }
+    );
+
+8.4.2 Propsの値の利用の注意点
+    Propsの値は、子コンポーネントでは直接変更できない。個々のPropsはreadonly。
+    Propsの値はリアクティブシステムの管理対象であり、親コンポーネントで値を変更するとそれが反映される。
+    子コンポーネントで独自に値を変更すると不整合が起こりかねず、readonlyとされている。
+    子コンポーネントで値を変更する可能性があるPropsは、
+    いったんコンポーネント内で別のリアクティブ変数に値をコピーして利用する。
+    const localPoints = ref(props.points)
+
+8.4.3 Propsのデフォルト値 withDefaults()関数
+    第一引数にdefineProps()の戻り値、
+    第二引数に非必須項目のデフォルト値を記述したオブジェクトを渡す。
+    withDefaults(
+        defineProps<Props>(),
+        {
+            非必須Props名: デフォルト値,
+        }
+    )

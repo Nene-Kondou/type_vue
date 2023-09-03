@@ -162,3 +162,9 @@ mustache
 
 9.1.3 Slotのフォールバックコンテンツ
     フォールバックコンテンツ...slotにHTML要素が渡されなかった場合を想定してデフォルトのHTML要素を設定すること
+    子コンポーネント
+    <slot>
+      <p>問題ありません。</p>
+    </slot>
+    親コンポーネント
+    <OneSection :name="jiro">// <p>問題ありません。</p></OneSection>
